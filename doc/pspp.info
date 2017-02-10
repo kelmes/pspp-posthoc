@@ -1,0 +1,294 @@
+This is pspp.info, produced by makeinfo version 5.2 from pspp.texi.
+
+This manual is for GNU PSPP version 0.10.2, software for statistical
+analysis.
+
+   Copyright (C) 1997, 1998, 2004, 2005, 2009, 2012, 2013, 2014, 2016
+Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.  A copy of the license is included in the
+     section entitled "GNU Free Documentation License".
+INFO-DIR-SECTION Math
+START-INFO-DIR-ENTRY
+* PSPP: (pspp).             Statistical analysis package.
+* PSPPIRE: (pspp).          Graphical user interface to PSPP.
+END-INFO-DIR-ENTRY
+
+   The authors wish to thank Network Theory Ltd
+<http://www.network-theory.co.uk> for their financial support in the
+production of this manual.
+
+
+Indirect:
+pspp.info-1: 978
+pspp.info-2: 301521
+
+Tag Table:
+(Indirect)
+Node: Top978
+Node: Introduction3235
+Node: License4274
+Node: Invoking PSPP6466
+Node: Main Options7116
+Node: PDF PostScript and SVG Output Options13042
+Node: Plain Text Output Options16124
+Node: HTML Output Options19538
+Node: OpenDocument Output Options20531
+Node: Comma-Separated Value Output Options21096
+Node: Invoking PSPPIRE23795
+Node: Using PSPP24607
+Ref: Using PSPP-Footnote-126598
+Node: Preparation of Data Files26698
+Node: Defining Variables27879
+Ref: data-list28462
+Node: Listing the data30878
+Node: Reading data from a text file31684
+Node: Reading data from a pre-prepared PSPP file32925
+Node: Saving data to a PSPP file.33745
+Node: Reading data from other sources34393
+Node: Exiting PSPP34817
+Node: Data Screening and Transformation35027
+Node: Identifying incorrect data35625
+Ref: descriptives36490
+Ref: examine38182
+Node: Dealing with suspicious data39639
+Node: Inverting negatively coded variables40992
+Node: Testing data consistency42666
+Ref: reliability43533
+Node: Testing for normality44749
+Ref: normality46730
+Node: Hypothesis Testing50124
+Ref: Hypothesis Testing-Footnote-151405
+Node: Testing for differences of means51490
+Ref: t-test53771
+Node: Linear Regression55983
+Ref: regression56952
+Node: Language60390
+Node: Tokens61262
+Node: Commands66046
+Node: Syntax Variants67286
+Node: Types of Commands68864
+Node: Order of Commands70357
+Node: Missing Observations72714
+Node: Datasets74045
+Node: Attributes75155
+Node: System Variables78158
+Node: Sets of Variables79205
+Node: Input and Output Formats80602
+Node: Basic Numeric Formats82771
+Node: Custom Currency Formats90592
+Node: Legacy Numeric Formats92872
+Node: Binary and Hexadecimal Numeric Formats95969
+Node: Time and Date Formats100163
+Node: Date Component Formats106266
+Node: String Formats107349
+Node: Scratch Variables108085
+Node: Files109311
+Node: File Handles110636
+Node: BNF112713
+Node: Expressions114943
+Node: Boolean Values116081
+Node: Missing Values in Expressions116774
+Node: Grouping Operators117610
+Node: Arithmetic Operators118027
+Node: Logical Operators118904
+Node: Relational Operators119845
+Node: Functions120772
+Node: Mathematics122297
+Node: Miscellaneous Mathematics123187
+Node: Trigonometry124881
+Node: Missing Value Functions126035
+Node: Set Membership127621
+Node: Statistical Functions128799
+Node: String Functions130982
+Node: Time and Date137323
+Node: Time and Date Concepts138134
+Node: Time Construction139271
+Node: Time Extraction139891
+Node: Date Construction140659
+Node: Date Extraction142855
+Node: Time and Date Arithmetic145481
+Node: Miscellaneous Functions148219
+Ref: LAG148446
+Node: Statistical Distribution Functions150463
+Node: Continuous Distributions152866
+Node: Discrete Distributions159688
+Node: Order of Operations161494
+Node: Data Input and Output161992
+Node: BEGIN DATA163950
+Node: CLOSE FILE HANDLE164517
+Node: DATAFILE ATTRIBUTE165106
+Node: DATASET167299
+Node: DATA LIST170314
+Node: DATA LIST FIXED171345
+Node: DATA LIST FIXED Examples176778
+Node: DATA LIST FREE178754
+Node: DATA LIST LIST181060
+Node: END CASE181795
+Node: END FILE182053
+Node: FILE HANDLE182312
+Node: INPUT PROGRAM190652
+Node: LIST195550
+Node: NEW FILE196902
+Node: PRINT197125
+Node: PRINT EJECT200149
+Node: PRINT SPACE201341
+Node: REREAD202228
+Node: REPEATING DATA203566
+Node: WRITE207295
+Node: System and Portable File IO208567
+Node: APPLY DICTIONARY209507
+Node: EXPORT212198
+Node: GET213917
+Node: GET DATA216415
+Node: GET DATA /TYPE=GNM/ODS217631
+Node: GET DATA /TYPE=PSQL220156
+Node: GET DATA /TYPE=TXT222652
+Node: GET DATA /TYPE=TXT /ARRANGEMENT=DELIMITED224488
+Node: GET DATA /TYPE=TXT /ARRANGEMENT=FIXED229841
+Node: IMPORT232300
+Node: SAVE233245
+Node: SAVE TRANSLATE237023
+Node: SAVE TRANSLATE /TYPE=CSV and TYPE=TAB239054
+Node: SYSFILE INFO242227
+Node: XEXPORT243279
+Node: XSAVE244096
+Node: Combining Data Files244916
+Node: Combining Files Common Syntax246351
+Node: ADD FILES252827
+Node: MATCH FILES254201
+Node: UPDATE256865
+Node: Variable Attributes259074
+Node: ADD VALUE LABELS260780
+Node: DELETE VARIABLES261184
+Node: DISPLAY261840
+Node: FORMATS264182
+Node: LEAVE264982
+Node: MISSING VALUES266299
+Node: MODIFY VARS267603
+Node: MRSETS269465
+Node: NUMERIC273591
+Node: PRINT FORMATS274191
+Node: RENAME VARIABLES274648
+Node: SORT VARIABLES275531
+Node: VALUE LABELS277971
+Node: STRING279191
+Node: VARIABLE ATTRIBUTE280427
+Node: VARIABLE LABELS282952
+Node: VARIABLE ALIGNMENT283697
+Node: VARIABLE WIDTH284291
+Node: VARIABLE LEVEL284810
+Node: VARIABLE ROLE285332
+Node: VECTOR286259
+Node: WRITE FORMATS287792
+Node: Data Manipulation288220
+Node: AGGREGATE289096
+Node: AUTORECODE297340
+Node: COMPUTE298950
+Node: COUNT301521
+Node: FLIP304499
+Node: IF306521
+Node: RECODE308060
+Node: SORT CASES315339
+Node: Data Selection316531
+Node: FILTER317323
+Node: N OF CASES318402
+Node: SAMPLE319813
+Node: SELECT IF321557
+Node: SPLIT FILE322430
+Node: TEMPORARY323719
+Node: WEIGHT324763
+Node: Conditionals and Looping326101
+Node: BREAK326627
+Node: DO IF326918
+Node: DO REPEAT327832
+Node: LOOP330341
+Node: Statistics333001
+Node: DESCRIPTIVES334260
+Node: FREQUENCIES337696
+Ref: FREQUENCIES-Footnote-1342348
+Node: EXAMINE342600
+Ref: EXAMINE-Footnote-1349301
+Node: GRAPH349512
+Node: SCATTERPLOT350260
+Node: HISTOGRAM350945
+Node: BAR CHART351495
+Node: CORRELATIONS353478
+Node: CROSSTABS356178
+Node: FACTOR362131
+Node: GLM367738
+Node: LOGISTIC REGRESSION369871
+Node: MEANS373085
+Node: NPAR TESTS376958
+Node: BINOMIAL378853
+Node: CHISQUARE380721
+Node: COCHRAN381793
+Node: FRIEDMAN382257
+Node: KENDALL382749
+Node: KOLMOGOROV-SMIRNOV383311
+Node: KRUSKAL-WALLIS385075
+Node: MANN-WHITNEY385889
+Node: MCNEMAR386762
+Node: MEDIAN387744
+Node: RUNS388785
+Node: SIGN389480
+Node: WILCOXON390354
+Node: T-TEST391347
+Node: One Sample Mode393162
+Node: Independent Samples Mode393626
+Node: Paired Samples Mode394892
+Node: ONEWAY395741
+Node: QUICK CLUSTER398586
+Node: RANK401461
+Node: REGRESSION404006
+Node: Syntax405412
+Node: Examples407767
+Node: RELIABILITY408522
+Node: ROC410270
+Node: Utilities413401
+Node: ADD DOCUMENT415262
+Node: CACHE415846
+Node: CD416034
+Node: COMMENT416256
+Node: DOCUMENT416692
+Node: DISPLAY DOCUMENTS417484
+Node: DISPLAY FILE LABEL417830
+Node: DROP DOCUMENTS418165
+Node: ECHO418565
+Node: ERASE418873
+Node: EXECUTE419165
+Node: FILE LABEL419392
+Node: FINISH419829
+Node: HOST420046
+Node: INCLUDE420626
+Node: INSERT421403
+Node: OUTPUT424402
+Node: PERMISSIONS425593
+Node: PRESERVE and RESTORE426330
+Node: SET426703
+Ref: SET BLANKS429478
+Ref: SET DECIMAL429751
+Ref: SET EPOCH430367
+Ref: SET RIB430779
+Ref: SET RRB431362
+Ref: SET FUZZBITS434292
+Ref: CCx Settings435157
+Ref: SET WIB435554
+Ref: SET WRB436137
+Node: SHOW441105
+Node: SUBTITLE442813
+Node: TITLE443352
+Node: Invoking pspp-convert443829
+Node: Invoking pspp-dump-sav446737
+Node: Not Implemented448073
+Node: Bugs452779
+Node: Function Index456389
+Node: Command Index479127
+Node: Concept Index490022
+Node: GNU Free Documentation License534014
+
+End Tag Table

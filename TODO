@@ -1,0 +1,45 @@
+warning: `bank.sav' near offset 0x500: Integer format indicated by system
+file (1) differs from expected (2).
+http://www.uccs.edu/~faculty/lbecker/SPSS/data/bank.sav
+$FL2@(#) SPSS DATA FILE SPSS for Unix Release 5.0 (SCO UNIX
+
+
+To fix before merging
+---------------------
+
+Moving the focus to a different top-level window, then back to the
+datasheet or variable sheet window, causes editing of the current cell
+to stop.  One must click again to start editing again.
+
+
+Other bugs
+----------
+
+If you resize the columns on the variable view, for example the Type
+column, such that it is narrower than default, the button gets cut,
+before the label.  This causes the startup condition to look odd in
+locales with longer than normal labels.  For example a German locale,
+which says "Numerisch" and then there is half a button to the right.
+
+Switching between Data and Variable view causes the Toolbar to be
+redrawn. I guess that's ok.  But it redraws in a funny way.  It seems
+to redraw, then insert the buttons one by one, redrawing after each.
+Looks distracting.  (Reported by John Darrington.)
+
+The case buttons at the head of each row in the data sheet should not
+scroll with the rest of the row.  (Reported by John Darrington.)
+
+The space to the right of the "new variable" column in the data sheet
+doesn't look like the SPSS sheet or like a normal spreadsheet.
+(Reported by John Darrington and Michel Boaventura.)
+
+I think a solid line or some kind of separator beneath the data
+sheet's entry/label hbox would make the appearance nicer.  (Reported
+by John Darrington and Michel Boaventura.)
+
+If I click on Insert Case in the data sheet, the new case assumes the
+value of the cell which is currently selected.  It should have all
+values empty.  This happens only on Windows.  (Reported by John
+Darrington.)
+
+Large copies hang in the data sheet.
