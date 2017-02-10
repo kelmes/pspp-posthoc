@@ -63,8 +63,16 @@ struct _PsppireDialogActionOneway
   GtkWidget *descriptives;
   GtkWidget *homogeneity;
 
+  GtkWidget *posthoc_bonferroni;
+  GtkWidget *posthoc_gh;
+  GtkWidget *posthoc_lsd;
+  GtkWidget *posthoc_scheffe;
+  GtkWidget *posthoc_sidak;
+  GtkWidget *posthoc_tukey;
+
 
   GtkWidget *contrasts_dialog;
+  GtkWidget *posthoc_dialog;
 
   GtkWidget *next;
   GtkWidget *prev;

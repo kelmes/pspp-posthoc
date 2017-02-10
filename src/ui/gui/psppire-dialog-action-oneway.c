@@ -37,6 +37,7 @@
 static void next (GtkWidget *widget, PsppireDialogActionOneway *);
 static void prev (GtkWidget *widget, PsppireDialogActionOneway *);
 static void run_contrasts_dialog (PsppireDialogActionOneway *csd);
+static void run_posthoc_dialog (PsppireDialogActionOneway *csd);
 static void push_new_store (GArray *contrast_stack, PsppireDialogActionOneway *csd);
 
 
@@ -55,6 +56,14 @@ generate_syntax (const PsppireDialogAction *act)
 
   gboolean descriptives = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->descriptives));
   gboolean homogeneity = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->homogeneity));
+
+  gboolean posthoc_bonferroni = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_bonferroni));
+  gboolean posthoc_gh = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_gh));
+  gboolean posthoc_lsd = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_lsd));
+  gboolean posthoc_scheffe = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_scheffe));
+  gboolean posthoc_sidak = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_sidak));
+  gboolean posthoc_tukey = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ow->posthoc_tukey));
+
   struct string dss;
 
   ds_init_cstr (&dss, "ONEWAY /VARIABLES=");
@@ -73,6 +82,23 @@ generate_syntax (const PsppireDialogAction *act)
       if (homogeneity)
 	ds_put_cstr (&dss, "HOMOGENEITY ");
     }
+
+	if (posthoc_bonferroni || posthoc_gh || posthoc_lsd || posthoc_scheffe || posthoc_sidak || posthoc_tukey)
+	{
+		ds_put_cstr(&dss, "\n\t/POSTHOC=");
+		if (posthoc_bonferroni)
+			ds_put_cstr(&dss, "BONFERRONI ");
+		if (posthoc_gh)
+			ds_put_cstr(&dss, "GH ");
+		if (posthoc_lsd)
+			ds_put_cstr(&dss, "LSD ");
+		if (posthoc_scheffe)
+			ds_put_cstr(&dss, "SCHEFFE ");
+		if (posthoc_sidak)
+			ds_put_cstr(&dss, "SIDAK ");
+		if (posthoc_tukey)
+			ds_put_cstr(&dss, "TUKEY ");
+	}
 
   for (i = 0 ; i < ow->contrasts_array->len ; ++i )
     {
@@ -236,6 +262,8 @@ psppire_dialog_action_oneway_activate (PsppireDialogAction *a)
 
   GtkWidget *contrasts_button =
     get_widget_assert (xml, "contrasts-button");
+  GtkWidget *posthoc_button =
+    get_widget_assert (xml, "posthoc-button");
   GtkEntry *entry = GTK_ENTRY (get_widget_assert (xml, "entry1"));
 
   pda->dialog = get_widget_assert   (xml, "oneway-anova-dialog");
@@ -247,7 +275,15 @@ psppire_dialog_action_oneway_activate (PsppireDialogAction *a)
   act->descriptives =  get_widget_assert (xml, "checkbutton1");
   act->homogeneity =  get_widget_assert (xml, "checkbutton2");
 
+	act->posthoc_bonferroni = get_widget_assert (xml, "checkbutton-bonferroni");
+	act->posthoc_gh = get_widget_assert (xml, "checkbutton-gh");
+	act->posthoc_lsd = get_widget_assert (xml, "checkbutton-lsd");
+	act->posthoc_scheffe = get_widget_assert (xml, "checkbutton-scheffe");
+	act->posthoc_sidak = get_widget_assert (xml, "checkbutton-sidak");
+	act->posthoc_tukey = get_widget_assert (xml, "checkbutton-tukey");
+
   act->contrasts_dialog = get_widget_assert (xml, "contrasts-dialog");
+  act->posthoc_dialog = get_widget_assert (xml, "posthoc-dialog");
   
   act->next = get_widget_assert (xml, "next-button");
   act->prev = get_widget_assert (xml, "prev-button");
@@ -265,9 +301,15 @@ psppire_dialog_action_oneway_activate (PsppireDialogAction *a)
   gtk_window_set_transient_for (GTK_WINDOW (act->contrasts_dialog),
 				  GTK_WINDOW (pda->toplevel));
 
+  gtk_window_set_transient_for (GTK_WINDOW (act->posthoc_dialog),
+				  GTK_WINDOW (pda->toplevel));
+
 
   g_signal_connect_swapped (contrasts_button, "clicked",
 		    G_CALLBACK (run_contrasts_dialog), act);
+
+  g_signal_connect_swapped (posthoc_button, "clicked",
+		    G_CALLBACK (run_posthoc_dialog), act);
 
 
   psppire_dialog_action_set_valid_predicate (pda, dialog_state_valid);
@@ -294,7 +336,6 @@ psppire_dialog_action_oneway_init (PsppireDialogActionOneway *act)
 }
 
 
-
 
 static void
 run_contrasts_dialog (PsppireDialogActionOneway *csd)
@@ -315,6 +356,30 @@ run_contrasts_dialog (PsppireDialogActionOneway *csd)
     }
 }
 
+static void
+run_posthoc_dialog (PsppireDialogActionOneway *csd)
+{
+  /*gint response;
+
+  csd->temp_contrasts = clone_contrasts_array (csd->contrasts_array);
+
+  csd->c = 1;
+
+  push_new_store (csd->temp_contrasts, csd);
+
+  response = psppire_dialog_run (PSPPIRE_DIALOG (csd->contrasts_dialog));
+
+  if ( response == PSPPIRE_RESPONSE_CONTINUE )
+    {
+      csd->contrasts_array = clone_contrasts_array (csd->temp_contrasts);
+    }*/
+
+  psppire_dialog_run (PSPPIRE_DIALOG (csd->posthoc_dialog));
+
+	//gboolean tukey = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (csd->posthoc_dialog->checkbutton-tukey));
+
+	//printf("test: %s\n", tukey);
+}
 
 static void
 push_new_store (GArray *contrast_stack, PsppireDialogActionOneway *csd)
